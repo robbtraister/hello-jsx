@@ -18,7 +18,7 @@ function Accounts () {
   return (
     <>
       <Title>Accounts</Title>
-      { txs.map((tx, i) => <Transaction key={i} {...tx} />)}
+      { txs.map((tx, i) => <Transaction key={i} {...tx} />) }
     </>
   )
 }
