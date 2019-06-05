@@ -9,9 +9,9 @@ import App from '.'
 import Loading from './_components/loading'
 
 const withLoading = (Component) =>
-  () =>
+  (props) =>
     <Suspense fallback={<Loading />}>
-      <Component />
+      <Component {...props} />
     </Suspense>
 
 const Accounts = withLoading(lazy(() => import(/* webpackChunkName: "accounts" */ './accounts')))
