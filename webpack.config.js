@@ -2,42 +2,66 @@
 
 const path = require('path')
 
-module.exports = {
-  devtool: 'source-map',
-  entry: {
-    // app: './src/app',
-    client: './src/client'
-  },
-  module: {
-    rules: [
+const devtool = 'source-map'
+
+const resolve = {
+  extensions: ['.mjsx', '.jsx', '.mjs', '.js', '.json']
+}
+
+const rules = [
+  {
+    test: /\.m?[jt]sx?$/i,
+    exclude: /\/node_modules\//,
+    use: [
       {
-        test: /\.m?[jt]sx?$/i,
-        exclude: /\/node_modules\//,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              babelrc: false,
-              presets: [
-                '@babel/env',
-                '@babel/react'
-              ],
-              plugins: [
-                '@babel/proposal-class-properties',
-                '@babel/syntax-dynamic-import'
-              ]
-            }
-          }
-        ]
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          presets: [
+            '@babel/env',
+            '@babel/react'
+          ],
+          plugins: [
+            '@babel/proposal-class-properties',
+            '@babel/syntax-dynamic-import'
+          ]
+        }
       }
     ]
-  },
-  output: {
-    filename: '[name].js',
-    chunkFilename: '[name].js',
-    path: path.resolve('./dist')
-  },
-  resolve: {
-    extensions: ['.mjsx', '.jsx', '.mjs', '.js', '.json']
   }
-}
+]
+
+module.exports = [
+  {
+    devtool,
+    entry: {
+      client: './src/app/client'
+    },
+    module: {
+      rules
+    },
+    output: {
+      filename: '[name].js',
+      chunkFilename: '[name].js',
+      path: path.resolve('./dist')
+    },
+    resolve,
+    target: 'web'
+  },
+  {
+    devtool,
+    entry: {
+      server: './src/app/server'
+    },
+    module: {
+      rules
+    },
+    output: {
+      filename: '[name].js',
+      libraryTarget: 'commonjs2',
+      path: path.resolve('./dist')
+    },
+    resolve,
+    target: 'node'
+  }
+]

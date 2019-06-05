@@ -1,18 +1,13 @@
 'use strict'
 
-import React, { Component, lazy, Suspense } from 'react'
-import { BrowserRouter, Redirect, Route } from 'react-router-dom'
+import React, { Component } from 'react'
+import { BrowserRouter, Redirect, Route, StaticRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
-import Footer from './footer'
-import Header from './header'
+import Footer from './_components/footer'
+import Header from './_components/header'
 import Loading from './_components/loading'
-
-const withLoading = (Component) => () => <Suspense fallback={<Loading />}><Component /></Suspense>
-const Accounts = withLoading(lazy(() => import(/* webpackMode: "lazy" */ './accounts')))
-const Budget = withLoading(lazy(() => import(/* webpackMode: "lazy" */ './budget')))
-const Home = withLoading(lazy(() => import(/* webpackMode: "lazy" */ './home')))
-const Score = withLoading(lazy(() => import(/* webpackMode: "lazy" */ './score')))
+import Title from './_components/title'
 
 const Container = styled.div`
   height: 100%;
@@ -30,34 +25,42 @@ const Main = styled.div`
   width: 920px;
 `
 
+const Router = (typeof window === 'undefined')
+  ? StaticRouter
+  : BrowserRouter
+
+const tabs = {
+  home: 'Home',
+  score: 'Wellness Score',
+  accounts: 'Accounts',
+  budget: 'Budget'
+}
+
 class App extends Component {
-  state = {
-    Component: 'div'
-  }
-
-  setComponent = (Component) => {
-    this.setState({ Component })
-  }
-
   render () {
-    const { Component } = this.state
+    const { components = {}, ...props } = this.props
 
     return (
-      <BrowserRouter>
+      <Router {...props}>
         <Container>
-          <Header setComponent={this.setComponent} />
+          <Header />
           <Body>
             <Main>
               <Route exact path='/' render={() => <Redirect to='/home' />} />
-              <Route path='/home' render={Home} />
-              <Route path='/score' render={Score} />
-              <Route path='/accounts' render={Accounts} />
-              <Route path='/budget' render={Budget} />
+              {
+                Object.keys(tabs)
+                  .map((key) =>
+                    <>
+                      <Route path={`/${key}`} key={`${key}-title`} render={() => <Title>{tabs[key]}</Title>} />
+                      <Route path={`/${key}`} key={key} render={components[key] || Loading} />
+                    </>
+                  )
+              }
             </Main>
           </Body>
           <Footer />
         </Container>
-      </BrowserRouter>
+      </Router>
     )
   }
 }

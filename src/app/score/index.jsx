@@ -6,8 +6,6 @@ import styled from 'styled-components'
 import Section from './section'
 import Meter from './meter'
 
-import Title from '../_components/title'
-
 const Left = styled.div`
   display: inline-block;
   width: 220px;
@@ -32,7 +30,6 @@ const sections = [
 class Score extends PureComponent {
   render () {
     return <>
-      <Title>Wellness Score</Title>
       <div>
         <Left>
           <Meter score='84' total='100' />

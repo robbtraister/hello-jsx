@@ -2,7 +2,6 @@
 
 'use strict'
 
-const fs = require('fs')
 const path = require('path')
 
 const express = require('express')
@@ -14,9 +13,17 @@ app.use(require('compression')())
 app.use(express.static(path.join(__dirname, '..', '..', 'resources')))
 app.use(express.static(path.join(__dirname, '..', '..', 'dist')))
 
-app.get('*', (req, res, next) => {
-  fs.createReadStream(path.join(__dirname, '..', '..', 'resources', 'index.html')).pipe(res)
-})
+if (/^prod/i.test(process.env.NODE_ENV)) {
+  app.use(require('./router'))
+} else {
+  app.use((req, res, next) => {
+    Object.keys(require.cache)
+      .filter((mod) => !/\/node_modules\//.test(mod))
+      .forEach((mod) => { delete require.cache[mod] })
+
+    require('./router')(req, res, next)
+  })
+}
 
 const port = process.env.PORT || 8080
 app.listen(port, (error) => {

@@ -2,8 +2,6 @@
 
 import React from 'react'
 
-import Title from '../_components/title'
-
 import Transaction from './transaction'
 
 const txs = [
@@ -17,7 +15,6 @@ const txs = [
 function Accounts () {
   return (
     <>
-      <Title>Accounts</Title>
       { txs.map((tx, i) => <Transaction key={i} {...tx} />) }
     </>
   )
