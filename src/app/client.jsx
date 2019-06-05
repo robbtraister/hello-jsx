@@ -8,13 +8,18 @@ import App from '.'
 
 import Loading from './_components/loading'
 
-const withLoading = (Component) => () => <Suspense fallback={<Loading />}><Component /></Suspense>
+const withLoading = (Component) =>
+  () =>
+    <Suspense fallback={<Loading />}>
+      <Component />
+    </Suspense>
+
 const Accounts = withLoading(lazy(() => import(/* webpackChunkName: "accounts" */ './accounts')))
 const Budget = withLoading(lazy(() => import(/* webpackChunkName: "budget" */ './budget')))
 const Home = withLoading(lazy(() => import(/* webpackChunkName: "home" */ './home')))
 const Score = withLoading(lazy(() => import(/* webpackChunkName: "score" */ './score')))
 
-const components = {
+const pages = {
   home: Home,
   score: Score,
   accounts: Accounts,
@@ -23,7 +28,7 @@ const components = {
 
 function render () {
   ReactDOM.render(
-    <App Router={BrowserRouter} components={components} />,
+    <App Router={BrowserRouter} pages={pages} />,
     document.getElementById('app')
   )
 }

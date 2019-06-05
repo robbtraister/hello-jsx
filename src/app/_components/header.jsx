@@ -30,10 +30,7 @@ const Tab = styled(NavLink)`
 function Header (props) {
   return (
     <Container>
-      <Tab to='/home'>Home</Tab>
-      <Tab to='/score'>Score</Tab>
-      <Tab to='/accounts'>Accounts</Tab>
-      <Tab to='/budget'>Budget</Tab>
+      { props.tabs.map((tab) => <Tab key={tab} to={`/${tab}`}>{tab}</Tab>) }
     </Container>
   )
 }
