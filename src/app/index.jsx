@@ -1,6 +1,6 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -46,10 +46,10 @@ class App extends Component {
               {
                 Object.keys(titles)
                   .map((key) =>
-                    <>
+                    <Fragment key={key}>
                       <Route path={`/${key}`} key={`${key}-title`} render={() => <Title>{titles[key]}</Title>} />
-                      <Route path={`/${key}`} key={key} render={components[key] || Loading} />
-                    </>
+                      <Route path={`/${key}`} key={key} component={components[key] || Loading} />
+                    </Fragment>
                   )
               }
             </Main>
