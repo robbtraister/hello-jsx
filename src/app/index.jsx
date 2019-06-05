@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { BrowserRouter, Redirect, Route, StaticRouter } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
 import Footer from './_components/footer'
@@ -25,11 +25,7 @@ const Main = styled.div`
   width: 920px;
 `
 
-const Router = (typeof window === 'undefined')
-  ? StaticRouter
-  : BrowserRouter
-
-const tabs = {
+const titles = {
   home: 'Home',
   score: 'Wellness Score',
   accounts: 'Accounts',
@@ -41,17 +37,17 @@ class App extends Component {
     const { components = {}, ...props } = this.props
 
     return (
-      <Router {...props}>
+      <props.Router {...props}>
         <Container>
           <Header />
           <Body>
             <Main>
               <Route exact path='/' render={() => <Redirect to='/home' />} />
               {
-                Object.keys(tabs)
+                Object.keys(titles)
                   .map((key) =>
                     <>
-                      <Route path={`/${key}`} key={`${key}-title`} render={() => <Title>{tabs[key]}</Title>} />
+                      <Route path={`/${key}`} key={`${key}-title`} render={() => <Title>{titles[key]}</Title>} />
                       <Route path={`/${key}`} key={key} render={components[key] || Loading} />
                     </>
                   )
@@ -60,7 +56,7 @@ class App extends Component {
           </Body>
           <Footer />
         </Container>
-      </Router>
+      </props.Router>
     )
   }
 }

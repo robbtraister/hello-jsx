@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
 import { ServerStyleSheet } from 'styled-components'
 
 import App from '.'
@@ -18,7 +19,7 @@ function Page (props) {
       </head>
       <body>
         <div id='app'>
-          <App {...props} />
+          <App Router={StaticRouter} {...props} />
         </div>
       </body>
     </html>

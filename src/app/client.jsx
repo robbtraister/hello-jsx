@@ -2,6 +2,7 @@
 
 import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import App from '.'
 
@@ -22,7 +23,7 @@ const components = {
 
 function render () {
   ReactDOM.render(
-    <App components={components} />,
+    <App Router={BrowserRouter} components={components} />,
     document.getElementById('app')
   )
 }
