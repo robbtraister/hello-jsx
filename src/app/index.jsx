@@ -34,29 +34,27 @@ const titles = {
 
 class App extends Component {
   render () {
-    const { pages = {}, Router, ...props } = this.props
+    const { pages = {} } = this.props
 
     return (
-      <Router {...props}>
-        <Container>
-          <Header tabs={Object.keys(titles)} />
-          <Body>
-            <Main>
-              <Route exact path='/' render={() => <Redirect to='/home' />} />
-              {
-                Object.keys(titles)
-                  .map((key) =>
-                    <Fragment key={key}>
-                      <Route path={`/${key}`} key={`${key}-title`} render={() => <Title>{titles[key]}</Title>} />
-                      <Route path={`/${key}`} key={key} component={pages[key] || Loading} />
-                    </Fragment>
-                  )
-              }
-            </Main>
-          </Body>
-          <Footer />
-        </Container>
-      </Router>
+      <Container>
+        <Header tabs={Object.keys(titles)} />
+        <Body>
+          <Main>
+            <Route exact path='/' render={() => <Redirect to='/home' />} />
+            {
+              Object.keys(titles)
+                .map((key) =>
+                  <Fragment key={key}>
+                    <Route path={`/${key}`} key={`${key}-title`} render={() => <Title>{titles[key]}</Title>} />
+                    <Route path={`/${key}`} key={key} component={pages[key] || Loading} />
+                  </Fragment>
+                )
+            }
+          </Main>
+        </Body>
+        <Footer />
+      </Container>
     )
   }
 }

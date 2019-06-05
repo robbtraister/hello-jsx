@@ -22,7 +22,9 @@ function render (props) {
           </head>
           <body>
             <div id='app'>
-              <App Router={StaticRouter} {...props} />
+              <StaticRouter {...props} >
+                <App />
+              </StaticRouter>
             </div>
           </body>
         </html>

@@ -28,7 +28,9 @@ const pages = {
 
 function render () {
   ReactDOM.render(
-    <App Router={BrowserRouter} pages={pages} />,
+    <BrowserRouter>
+      <App pages={pages} />
+    </BrowserRouter>,
     document.getElementById('app')
   )
 }
