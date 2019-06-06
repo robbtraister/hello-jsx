@@ -9,6 +9,8 @@
     "clean": "rm -rf ./dist/*",
     "desktop": "electron ./desktop/index.js",
     "dev": "npm run watch & npm run start",
+    "preversion": "npm run test",
+    "postversion": "git push && git push --tags",
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "npm run clean && webpack --config ./webpack.dev.js --watch --mode=development"
