@@ -10,8 +10,8 @@ const app = express()
 
 app.use(require('compression')())
 
-app.use(express.static(path.join(__dirname, '..', '..', 'resources')))
-app.use(express.static(path.join(__dirname, '..', '..', 'dist')))
+app.use('/dist', express.static(path.join(__dirname, '..', '..', 'dist'), { fallthrough: false }))
+app.use('/resources', express.static(path.join(__dirname, '..', '..', 'resources'), { fallthrough: false }))
 
 if (/^prod/i.test(process.env.NODE_ENV)) {
   app.use(require('./router'))

@@ -62,14 +62,14 @@ module.exports = [
       ]
     },
     output: {
-      filename: '[name].js',
-      chunkFilename: '[name].js',
-      path: path.resolve('./dist')
+      filename: 'dist/[name].js',
+      chunkFilename: 'dist/[name].js',
+      path: path.resolve('.')
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: '[name].css',
-        chunkFilename: '[name].css'
+        filename: 'dist/[name].css',
+        chunkFilename: 'dist/[name].css'
       })
     ],
     resolve,
@@ -98,9 +98,9 @@ module.exports = [
       ]
     },
     output: {
-      filename: '[name].js',
+      filename: 'dist/[name].js',
       libraryTarget: 'commonjs2',
-      path: path.resolve('./dist')
+      path: path.resolve('.')
     },
     resolve,
     target: 'node'
