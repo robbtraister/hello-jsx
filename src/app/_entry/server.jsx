@@ -8,6 +8,7 @@ import { ServerStyleSheet } from 'styled-components'
 import App from '..'
 
 function render (props) {
+  const { context, location, ...appProps } = props
   const sheet = new ServerStyleSheet()
   try {
     const html = ReactDOM.renderToStaticMarkup(
@@ -15,17 +16,17 @@ function render (props) {
         <html>
           <head>
             <title>Hello JSX</title>
-            <link rel='stylesheet' type='text/css' href='/main.css' />
-            <link rel='stylesheet' type='text/css' href='/client.css' />
-            <script type='application/javascript' src='/client.js' defer='defer' />
-            {/* <script type='application/javascript' src={`/${props.app}.js`} defer='defer' /> */}
+            <link rel='stylesheet' type='text/css' href='/resources/main.css' />
+            <link rel='stylesheet' type='text/css' href='/dist/client.css' />
+            <script type='application/javascript' src='/dist/client.js' defer='defer' />
+            {/* <script type='application/javascript' src={`/dist/${props.app}.js`} defer='defer' /> */}
             <dynamic-styles />
-            <link rel='icon' type='image/png' href='/icon.png' />
+            <link rel='icon' type='image/png' href='/resources/icon.png' />
           </head>
           <body>
             <div id='app'>
-              <StaticRouter {...props} >
-                <App />
+              <StaticRouter context={context} location={location} >
+                <App {...appProps} />
               </StaticRouter>
             </div>
           </body>

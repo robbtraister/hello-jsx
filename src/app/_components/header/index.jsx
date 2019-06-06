@@ -38,7 +38,7 @@ function Header (props) {
     <Container>
       {
         props.tabs.map((tab) =>
-          <Tab key={tab} to={`/${tab}`}>{tab}</Tab>
+          <Tab key={tab} to={`/${tab}`} className={tab}>{tab}</Tab>
         )
       }
     </Container>

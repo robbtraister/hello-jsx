@@ -19,6 +19,7 @@ const Accounts = withLazy(() => import(/* webpackChunkName: "accounts" */ '../ac
 const Budget = withLazy(() => import(/* webpackChunkName: "budget" */ '../budget'))
 const Guidance = withLazy(() => import(/* webpackChunkName: "guidance" */ '../guidance'))
 const Home = withLazy(() => import(/* webpackChunkName: "home" */ '../home'))
+const Profile = withLazy(() => import(/* webpackChunkName: "score" */ '../profile'))
 const Score = withLazy(() => import(/* webpackChunkName: "score" */ '../score'))
 
 const pages = {
@@ -26,13 +27,14 @@ const pages = {
   budget: Budget,
   guidance: Guidance,
   home: Home,
+  profile: Profile,
   score: Score
 }
 
-function render () {
+function render (props) {
   ReactDOM.render(
     <BrowserRouter>
-      <App pages={pages} />
+      <App {...props} pages={pages} />
     </BrowserRouter>,
     window.document.getElementById('app')
   )

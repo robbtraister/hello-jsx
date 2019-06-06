@@ -37,7 +37,8 @@ const titles = {
   score: 'Wellness Score',
   guidance: 'Guidance',
   accounts: 'Accounts',
-  budget: 'Budget'
+  budget: 'Budget',
+  profile: 'Profile'
 }
 
 const GoHome = () => <Redirect to='/home' />

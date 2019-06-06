@@ -10,6 +10,7 @@ import Accounts from '../accounts'
 import Budget from '../budget'
 import Guidance from '../guidance'
 import Home from '../home'
+import Profile from '../profile'
 import Score from '../score'
 
 const pages = {
@@ -17,6 +18,7 @@ const pages = {
   budget: Budget,
   home: Home,
   guidance: Guidance,
+  profile: Profile,
   score: Score
 }
 
