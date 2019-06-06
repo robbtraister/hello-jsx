@@ -18,4 +18,4 @@ RUN npm install
 COPY . ./
 
 ENTRYPOINT ["npm", "run"]
-CMD ["build"]
+CMD ["dev"]
