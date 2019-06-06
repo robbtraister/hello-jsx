@@ -13,12 +13,13 @@ import styles from './styles.scss'
 import styled from '../../../utils/styled'
 
 const Container = styled.section(styles.section)
+const Title = styled.h3(styles.title)
 
 function Section (props) {
   return (
     <Container>
-      <Meter backgroundColor='#eec' size='160' score={Math.floor(Math.random() * 10)} total='10' />
-      <h3>{props.title}</h3>
+      <Meter {...props} backgroundColor='#eec' size='160' />
+      <Title>{props.title}</Title>
     </Container>
   )
 }

@@ -21,15 +21,15 @@ class Meter extends PureComponent {
   animate () {
     const svg = d3.select(this.svg.current)
 
-    const { score } = this.props
-    const value = score / this.props.total
+    const { value } = this.props
+    const percent = value / this.props.total
 
-    svg.select('.score')
+    svg.select('.value')
       .transition()
       .duration(1500)
       .tween('text', function () {
         return function (t) {
-          this.textContent = Math.round(score * t)
+          this.textContent = Math.round(value * t)
         }
       })
 
@@ -37,7 +37,7 @@ class Meter extends PureComponent {
       .transition()
       .duration(1500)
       .ease(d3.easeBounce)
-      .attrTween('transform', () => (t) => `rotate(${getRotation(value * t)})`)
+      .attrTween('transform', () => (t) => `rotate(${getRotation(percent * t)})`)
   }
 
   render () {
@@ -58,7 +58,7 @@ class Meter extends PureComponent {
           </g>
         </g>
         <g fill='#444' textAnchor='middle' alignmentBaseline='middle'>
-          <text x='0' y='-20' fontSize='50' className='score'>0</text>
+          <text x='0' y='-20' fontSize='50' className='value'>0</text>
           <text x='0' y='5' fontSize='20'>out of</text>
           <text x='0' y='30' fontSize='40'>{this.props.total}</text>
         </g>
