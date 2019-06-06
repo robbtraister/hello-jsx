@@ -16,9 +16,11 @@ function render (props) {
           <head>
             <title>Hello JSX</title>
             <link rel='stylesheet' type='text/css' href='/main.css' />
-            <dynamic-styles />
+            <link rel='stylesheet' type='text/css' href='/client.css' />
             <script type='application/javascript' src='/client.js' defer='defer' />
             {/* <script type='application/javascript' src={`/${props.app}.js`} defer='defer' /> */}
+            <dynamic-styles />
+            <link rel='icon' type='image/png' href='/icon.png' />
           </head>
           <body>
             <div id='app'>

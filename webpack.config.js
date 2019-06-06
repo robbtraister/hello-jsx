@@ -2,13 +2,19 @@
 
 const path = require('path')
 
-const devtool = 'source-map'
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const devtool = 'hidden-source-map'
 
 const resolve = {
   extensions: ['.mjsx', '.jsx', '.mjs', '.js', '.json']
 }
 
-const rules = [
+const sharedRules = [
+  {
+    test: /\.s[ac]ss$/i,
+    use: 'sass-loader'
+  },
   {
     test: /\.m?[jt]sx?$/i,
     exclude: /\/node_modules\//,
@@ -38,13 +44,33 @@ module.exports = [
       client: './src/app/client'
     },
     module: {
-      rules
+      rules: [
+        {
+          test: /\.(s[ac]|c)ss$/i,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true
+              }
+            }
+          ]
+        },
+        ...sharedRules
+      ]
     },
     output: {
       filename: '[name].js',
       chunkFilename: '[name].js',
       path: path.resolve('./dist')
     },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[name].css'
+      })
+    ],
     resolve,
     target: 'web'
   },
@@ -54,7 +80,21 @@ module.exports = [
       server: './src/app/server'
     },
     module: {
-      rules
+      rules: [
+        {
+          test: /\.(s[ac]|c)ss$/i,
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                exportOnlyLocals: true,
+                modules: true
+              }
+            }
+          ]
+        },
+        ...sharedRules
+      ]
     },
     output: {
       filename: '[name].js',

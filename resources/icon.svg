@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="-125 -125 250 250"
+>
+  <g transform="rotate(-45)" stroke-width="40" fill="none">
+    <path d="M-100,0A100,100 0,0,1 0,-100" stroke="#f80" />
+    <path d="M0,-100A100,100 0,0,1 100,0" stroke="#ff0" />
+    <path d="M100,0A100,100 0,0,1 0,100" stroke="#0f0" />
+  </g>
+  <g stroke="#fff" stroke-width="5" fill="#a0f">
+    <!-- <path d="M-105,50h40v40h-40l15,-20z" />
+    <path d="M105,50h-40v40h40l-15,-20z" /> -->
+    <path d="M-90,60v40h180v-40z" />
+  </g>
+  <!-- <text x="0" y="86" font-size="18" text-anchor="middle" alignment-baseline="middle" fill="#fff" style="text-transform: uppercase; fontWeight: 100">WELLNESS SCORE</text> -->
+  <g className="tick" transform="rotate(45)" stroke="#fff" stroke-width="8" fill="#444">
+    <path d="M0,-70l-25,-60h50z" />
+  </g>
+</svg>
