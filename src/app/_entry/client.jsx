@@ -7,17 +7,19 @@ import { BrowserRouter } from 'react-router-dom'
 import App from '..'
 import Loading from '../_components/loading'
 
-const withLoading = (Component) =>
-  (props) =>
+const withLazy = (Component) => {
+  const LazyComponent = lazy(Component)
+  return (props) =>
     <Suspense fallback={<Loading />}>
-      <Component {...props} />
+      <LazyComponent {...props} />
     </Suspense>
+}
 
-const Accounts = withLoading(lazy(() => import(/* webpackChunkName: "accounts" */ '../accounts')))
-const Budget = withLoading(lazy(() => import(/* webpackChunkName: "budget" */ '../budget')))
-const Guidance = withLoading(lazy(() => import(/* webpackChunkName: "guidance" */ '../guidance')))
-const Home = withLoading(lazy(() => import(/* webpackChunkName: "home" */ '../home')))
-const Score = withLoading(lazy(() => import(/* webpackChunkName: "score" */ '../score')))
+const Accounts = withLazy(() => import(/* webpackChunkName: "accounts" */ '../accounts'))
+const Budget = withLazy(() => import(/* webpackChunkName: "budget" */ '../budget'))
+const Guidance = withLazy(() => import(/* webpackChunkName: "guidance" */ '../guidance'))
+const Home = withLazy(() => import(/* webpackChunkName: "home" */ '../home'))
+const Score = withLazy(() => import(/* webpackChunkName: "score" */ '../score'))
 
 const pages = {
   accounts: Accounts,
