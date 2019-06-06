@@ -9,6 +9,8 @@ import Header from './components/header'
 import Loading from './components/loading'
 import Title from './components/title'
 
+import { Store } from './store'
+
 // const Container = styled.div`
 //   height: 100%;
 // `
@@ -37,8 +39,7 @@ const titles = {
   score: 'Wellness Score',
   guidance: 'Guidance',
   accounts: 'Accounts',
-  budget: 'Budget',
-  profile: 'Profile'
+  budget: 'Budget'
 }
 
 const GoHome = () => <Redirect to='/home' />
@@ -46,6 +47,15 @@ const GoHome = () => <Redirect to='/home' />
 const blocked = [
   // 'guidance'
 ]
+
+const withTitle = (Page, title) => {
+  const Component = Page || Loading
+  return () =>
+    <>
+      <Title>{title}</Title>
+      <Component />
+    </>
+}
 
 class App extends Component {
   render () {
@@ -55,27 +65,23 @@ class App extends Component {
 
     return (
       <Container>
-        <Header tabs={allowed} />
-        <Body>
-          <Main>
-            <Switch>
-              {
-                allowed.map((key) => {
-                  const Component = pages[key] || Loading
-                  const render = () =>
-                    <>
-                      <Title>{titles[key]}</Title>
-                      <Component />
-                    </>
-
-                  return <Route path={`/${key}`} key={`${key}`} render={render} />
-                })
-              }
-              <Route path='/' component={GoHome} />
-            </Switch>
-          </Main>
-        </Body>
-        <Footer />
+        <Store>
+          <Header tabs={allowed} />
+          <Body>
+            <Main>
+              <Switch>
+                {
+                  allowed.map((key) => {
+                    return <Route path={`/${key}`} key={`${key}`} render={withTitle(pages[key], titles[key])} />
+                  })
+                }
+                <Route path='/profile' component={withTitle(pages.profile, 'Profile')} />
+                <Route path='/' component={GoHome} />
+              </Switch>
+            </Main>
+          </Body>
+          <Footer />
+        </Store>
       </Container>
     )
   }

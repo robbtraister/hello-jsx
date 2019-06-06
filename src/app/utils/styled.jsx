@@ -8,7 +8,7 @@ const styled = (Component) =>
       <Component
         {...props}
         className={
-          [styles, props.className]
+          [].concat(styles, props.className)
             .map((c) => c && c.trim())
             .filter((c) => c)
             .join(' ')

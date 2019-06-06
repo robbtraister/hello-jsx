@@ -20,6 +20,15 @@ router.get('/guidance', (req, res, next) => {
   })
 })
 
+router.get('/profile', (req, res, next) => {
+  res.send({
+    profile: {
+      name: 'User',
+      address: '123 Fake St'
+    }
+  })
+})
+
 router.get('/score', (req, res, next) => {
   res.send({
     score: {
@@ -42,6 +51,18 @@ router.get('/score', (req, res, next) => {
         }
       ]
     }
+  })
+})
+
+router.get('/txs', (req, res, next) => {
+  res.send({
+    txs: [
+      {
+        account: 'WF',
+        title: 'mortgage',
+        amount: -2500
+      }
+    ]
   })
 })
 

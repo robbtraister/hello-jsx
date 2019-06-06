@@ -3,21 +3,18 @@
 import React from 'react'
 
 import Transaction from './transaction'
+import Loading from '../../components/loading'
+import { useStore } from '../../store'
 
-const txs = [
-  {
-    account: 'WF',
-    title: 'mortgage',
-    amount: -2500
-  }
-]
+const Accounts = (props) => {
+  const { get } = useStore()
+  const txs = get('txs')
 
-function Accounts () {
-  return (
-    <>
+  return (txs)
+    ? <>
       { txs.map((tx, i) => <Transaction key={i} {...tx} />) }
     </>
-  )
+    : <Loading />
 }
 
 export default Accounts
