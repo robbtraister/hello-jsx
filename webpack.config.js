@@ -41,7 +41,8 @@ module.exports = [
   {
     devtool,
     entry: {
-      client: './src/app/client'
+      client: './src/app/_entry/client',
+      electron: './src/app/_entry/electron'
     },
     module: {
       rules: [
@@ -77,7 +78,7 @@ module.exports = [
   {
     devtool,
     entry: {
-      server: './src/app/server'
+      server: './src/app/_entry/server'
     },
     module: {
       rules: [

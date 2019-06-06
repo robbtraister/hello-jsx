@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
 // `
 
 // const Tab = styled(NavLink)`
-//   border-radius: 3px;
+//   border-radius: 5px;
 //   color: #444;
 //   cursor: pointer;
 //   margin-left: 5px;

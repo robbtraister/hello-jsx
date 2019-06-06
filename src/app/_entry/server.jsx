@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { ServerStyleSheet } from 'styled-components'
 
-import App from '.'
+import App from '..'
 
 function render (props) {
   const sheet = new ServerStyleSheet()
