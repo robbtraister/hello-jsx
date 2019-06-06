@@ -28,7 +28,7 @@ import { NavLink } from 'react-router-dom'
 // `
 
 import styles from './styles.scss'
-import styled from '../../_utils/styled'
+import styled from '../../utils/styled'
 
 const Container = styled.div(styles.container)
 const Tab = styled(NavLink, styles.tab)

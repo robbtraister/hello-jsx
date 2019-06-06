@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
 import App from '..'
-import Loading from '../_components/loading'
+import Loading from '../components/loading'
 
 const withLazy = (Component) => {
   const LazyComponent = lazy(Component)
@@ -15,12 +15,12 @@ const withLazy = (Component) => {
     </Suspense>
 }
 
-const Accounts = withLazy(() => import(/* webpackChunkName: "accounts" */ '../accounts'))
-const Budget = withLazy(() => import(/* webpackChunkName: "budget" */ '../budget'))
-const Guidance = withLazy(() => import(/* webpackChunkName: "guidance" */ '../guidance'))
-const Home = withLazy(() => import(/* webpackChunkName: "home" */ '../home'))
-const Profile = withLazy(() => import(/* webpackChunkName: "score" */ '../profile'))
-const Score = withLazy(() => import(/* webpackChunkName: "score" */ '../score'))
+const Accounts = withLazy(() => import(/* webpackChunkName: "accounts" */ '../pages/accounts'))
+const Budget = withLazy(() => import(/* webpackChunkName: "budget" */ '../pages/budget'))
+const Guidance = withLazy(() => import(/* webpackChunkName: "guidance" */ '../pages/guidance'))
+const Home = withLazy(() => import(/* webpackChunkName: "home" */ '../pages/home'))
+const Profile = withLazy(() => import(/* webpackChunkName: "score" */ '../pages/profile'))
+const Score = withLazy(() => import(/* webpackChunkName: "score" */ '../pages/score'))
 
 const pages = {
   accounts: Accounts,

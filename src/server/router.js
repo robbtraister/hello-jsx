@@ -13,11 +13,12 @@ router.use(/.*\.(css|js)$/, (req, res, next) => {
 router.get('*', (req, res, next) => {
   const context = {}
   const location = req.url
+  const pageMatch = /^\/([^/]*)/.exec(location)
 
   const html = render({
-    // app: location.replace(/^\/+/, '').split('/').shift(),
     context,
-    location
+    location,
+    page: pageMatch && pageMatch[1]
   })
 
   if (context.url) {

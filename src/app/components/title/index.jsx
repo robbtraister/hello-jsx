@@ -13,7 +13,7 @@
 // `
 
 import styles from './styles.scss'
-import styled from '../../_utils/styled'
+import styled from '../../utils/styled'
 
 const Title = styled.div(styles.title)
 

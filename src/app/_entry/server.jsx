@@ -8,7 +8,7 @@ import { ServerStyleSheet } from 'styled-components'
 import App from '..'
 
 function render (props) {
-  const { context, location, ...appProps } = props
+  const { context, location, page, ...appProps } = props
   const sheet = new ServerStyleSheet()
   try {
     const html = ReactDOM.renderToStaticMarkup(
@@ -19,7 +19,7 @@ function render (props) {
             <link rel='stylesheet' type='text/css' href='/resources/main.css' />
             <link rel='stylesheet' type='text/css' href='/dist/client.css' />
             <script type='application/javascript' src='/dist/client.js' defer='defer' />
-            {/* <script type='application/javascript' src={`/dist/${props.app}.js`} defer='defer' /> */}
+            {/* <script type='application/javascript' src={`/dist/${page}.js`} defer='defer' /> */}
             <dynamic-styles />
             <link rel='icon' type='image/png' href='/resources/icon.png' />
           </head>

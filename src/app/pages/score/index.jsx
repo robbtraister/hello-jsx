@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react'
 // import styled from 'styled-components'
 
 import Section from './section'
-import Meter from './meter'
+import Meter from '../../components/meter'
 
 // const Left = styled.div`
 //   display: inline-block;
@@ -16,7 +16,7 @@ import Meter from './meter'
 // `
 
 import styles from './styles.scss'
-import styled from '../_utils/styled'
+import styled from '../../utils/styled'
 
 const Left = styled.div(styles.left)
 const Main = styled.div(styles.main)

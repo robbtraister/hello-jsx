@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import Meter from '../meter'
+import Meter from '../../../components/meter'
 // import styled from 'styled-components'
 
 // const Container = styled.section`
@@ -10,7 +10,7 @@ import Meter from '../meter'
 // `
 
 import styles from './styles.scss'
-import styled from '../../_utils/styled'
+import styled from '../../../utils/styled'
 
 const Container = styled.section(styles.section)
 

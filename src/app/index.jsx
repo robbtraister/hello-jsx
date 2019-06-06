@@ -4,10 +4,10 @@ import React, { Component } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 // import styled from 'styled-components'
 
-import Footer from './_components/footer'
-import Header from './_components/header'
-import Loading from './_components/loading'
-import Title from './_components/title'
+import Footer from './components/footer'
+import Header from './components/header'
+import Loading from './components/loading'
+import Title from './components/title'
 
 // const Container = styled.div`
 //   height: 100%;
@@ -26,7 +26,7 @@ import Title from './_components/title'
 // `
 
 import styles from './styles.scss'
-import styled from './_utils/styled'
+import styled from './utils/styled'
 
 const Container = styled.div(styles.container)
 const Body = styled.div(styles.body)
