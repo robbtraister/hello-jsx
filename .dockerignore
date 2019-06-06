@@ -1,0 +1,9 @@
+**/.DS_Store
+.dockerignore
+.git*
+
+*Dockerfile
+docker-compose.yml
+
+dist/
+node_modules/
