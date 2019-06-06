@@ -3,8 +3,8 @@
 import React from 'react'
 
 const styled = (Component) =>
-  (styles) =>
-    (props) =>
+  (styles) => {
+    const StyledComponent = (props) =>
       <Component
         {...props}
         className={
@@ -14,6 +14,9 @@ const styled = (Component) =>
             .join(' ')
         }
       />
+    StyledComponent.displayName = `styled(${Component.displayName || Component.name || Component})`
+    return StyledComponent
+  }
 
 function withStyles (Component, styles) {
   return (arguments.length > 1)

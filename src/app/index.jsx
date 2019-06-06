@@ -1,7 +1,7 @@
 'use strict'
 
-import React, { Component, Fragment } from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
 // import styled from 'styled-components'
 
 import Footer from './_components/footer'
@@ -35,29 +35,43 @@ const Main = styled.div(styles.main)
 const titles = {
   home: 'Home',
   score: 'Wellness Score',
+  guidance: 'Guidance',
   accounts: 'Accounts',
   budget: 'Budget'
 }
+
+const GoHome = () => <Redirect to='/home' />
+
+const blocked = [
+  // 'guidance'
+]
 
 class App extends Component {
   render () {
     const { pages = {} } = this.props
 
+    const allowed = Object.keys(titles).filter(title => !blocked.includes(title))
+
     return (
-      <Container className={styles.container}>
-        <Header tabs={Object.keys(titles)} />
-        <Body className={styles.body}>
-          <Main className={styles.main}>
-            <Route exact path='/' render={() => <Redirect to='/home' />} />
-            {
-              Object.keys(titles)
-                .map((key) =>
-                  <Fragment key={key}>
-                    <Route path={`/${key}`} key={`${key}-title`} render={() => <Title>{titles[key]}</Title>} />
-                    <Route path={`/${key}`} key={key} component={pages[key] || Loading} />
-                  </Fragment>
-                )
-            }
+      <Container>
+        <Header tabs={allowed} />
+        <Body>
+          <Main>
+            <Switch>
+              {
+                allowed.map((key) => {
+                  const Component = pages[key] || Loading
+                  const render = () =>
+                    <>
+                      <Title>{titles[key]}</Title>
+                      <Component />
+                    </>
+
+                  return <Route path={`/${key}`} key={`${key}`} render={render} />
+                })
+              }
+              <Route path='/' component={GoHome} />
+            </Switch>
           </Main>
         </Body>
         <Footer />

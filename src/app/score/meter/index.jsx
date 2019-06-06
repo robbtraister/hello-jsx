@@ -43,8 +43,6 @@ class Meter extends PureComponent {
   render () {
     return (
       <svg
-        version='1.1'
-        xmlns='http://www.w3.org/2000/svg'
         width={this.props.size || '200'}
         height={this.props.size || '200'}
         viewBox='-125 -125 250 250'

@@ -1,6 +1,6 @@
 'use strict'
 
-import React from 'react'
+// import React from 'react'
 // import styled from 'styled-components'
 
 // const Title = styled.div`
@@ -17,4 +17,4 @@ import styled from '../../_utils/styled'
 
 const Title = styled.div(styles.title)
 
-export default (props) => <Title {...props} />
+export default Title

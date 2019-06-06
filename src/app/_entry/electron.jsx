@@ -8,14 +8,16 @@ import App from '..'
 
 import Accounts from '../accounts'
 import Budget from '../budget'
+import Guidance from '../guidance'
 import Home from '../home'
 import Score from '../score'
 
 const pages = {
-  home: Home,
-  score: Score,
   accounts: Accounts,
-  budget: Budget
+  budget: Budget,
+  home: Home,
+  guidance: Guidance,
+  score: Score
 }
 
 ReactDOM.render(

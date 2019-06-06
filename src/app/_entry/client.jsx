@@ -15,14 +15,16 @@ const withLoading = (Component) =>
 
 const Accounts = withLoading(lazy(() => import(/* webpackChunkName: "accounts" */ '../accounts')))
 const Budget = withLoading(lazy(() => import(/* webpackChunkName: "budget" */ '../budget')))
+const Guidance = withLoading(lazy(() => import(/* webpackChunkName: "guidance" */ '../guidance')))
 const Home = withLoading(lazy(() => import(/* webpackChunkName: "home" */ '../home')))
 const Score = withLoading(lazy(() => import(/* webpackChunkName: "score" */ '../score')))
 
 const pages = {
-  home: Home,
-  score: Score,
   accounts: Accounts,
-  budget: Budget
+  budget: Budget,
+  guidance: Guidance,
+  home: Home,
+  score: Score
 }
 
 function render () {

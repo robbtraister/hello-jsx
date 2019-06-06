@@ -36,7 +36,11 @@ const Tab = styled(NavLink, styles.tab)
 function Header (props) {
   return (
     <Container>
-      { props.tabs.map((tab) => <Tab key={tab} to={`/${tab}`}>{tab}</Tab>) }
+      {
+        props.tabs.map((tab) =>
+          <Tab key={tab} to={`/${tab}`}>{tab}</Tab>
+        )
+      }
     </Container>
   )
 }
