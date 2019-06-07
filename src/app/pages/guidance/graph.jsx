@@ -37,7 +37,7 @@ class Graph extends PureComponent {
       .attr('d', lineData)
       .datum(data)
       .transition()
-      .duration(1000)
+      .duration(800)
       .attr('d', lineData)
 
     const areaData = d3.area()
@@ -50,7 +50,7 @@ class Graph extends PureComponent {
       .attr('d', areaData)
       .datum(data)
       .transition()
-      .duration(1000)
+      .duration(800)
       .attr('d', areaData)
   }
 

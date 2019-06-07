@@ -8,9 +8,7 @@ import { useStore } from '../../store'
 import Graph from './graph'
 
 const Guidance = (props) => {
-  const { get } = useStore()
-
-  const guidance = get('guidance')
+  const guidance = useStore().get('guidance')
 
   return (guidance)
     ? <Graph data={guidance.retirementSavings} />

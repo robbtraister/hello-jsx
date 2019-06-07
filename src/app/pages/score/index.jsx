@@ -24,9 +24,7 @@ const Left = styled.div(styles.left)
 const Main = styled.div(styles.main)
 
 const Score = (props) => {
-  const { get } = useStore()
-
-  const score = get('score')
+  const score = useStore().get('score')
 
   return (score)
     ? <>

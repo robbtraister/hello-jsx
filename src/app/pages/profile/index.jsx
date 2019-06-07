@@ -6,9 +6,7 @@ import Loading from '../../components/loading'
 import { useStore } from '../../store'
 
 const Profile = (props) => {
-  const { get } = useStore()
-
-  const profile = get('profile')
+  const profile = useStore().get('profile')
 
   return (profile)
     ? <>

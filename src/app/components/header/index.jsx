@@ -37,9 +37,7 @@ const Tab = styled(NavLink, styles.tab)
 const Profile = styled(NavLink, [styles.tab, styles.profile])
 
 function Header (props) {
-  const { get } = useStore()
-
-  const profile = get('profile')
+  const profile = useStore().get('profile')
 
   return (
     <Container>
@@ -48,7 +46,7 @@ function Header (props) {
           <Tab key={tab} to={`/${tab}`}>{tab}</Tab>
         )
       }
-      <Profile to='/profile'>{(profile && profile.name) || 'Profile'}</Profile>
+      <Profile to='/profile'>{(profile && profile.name) ? `Hello, ${profile.name}` : 'Profile'}</Profile>
     </Container>
   )
 }

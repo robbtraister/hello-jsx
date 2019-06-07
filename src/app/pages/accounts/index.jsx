@@ -7,8 +7,7 @@ import Loading from '../../components/loading'
 import { useStore } from '../../store'
 
 const Accounts = (props) => {
-  const { get } = useStore()
-  const txs = get('txs')
+  const txs = useStore().get('txs')
 
   return (txs)
     ? <>

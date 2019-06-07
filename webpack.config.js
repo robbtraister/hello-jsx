@@ -64,7 +64,8 @@ module.exports = [
     output: {
       filename: 'dist/[name].js',
       chunkFilename: 'dist/[name].js',
-      path: path.resolve('.')
+      path: path.resolve('.'),
+      publicPath: '/'
     },
     plugins: [
       new MiniCssExtractPlugin({

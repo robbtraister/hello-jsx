@@ -2,7 +2,7 @@
   "name": "hello-jsx",
   "version": "0.0.1",
   "description": "",
-  "browser": "src/client",
+  "browser": "src/app",
   "main": "src/server",
   "scripts": {
     "build": "npm run clean && NODE_ENV=production webpack --mode=production",
