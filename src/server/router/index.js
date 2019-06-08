@@ -4,7 +4,7 @@ const { Router } = require('express')
 
 const router = Router()
 
-router.use(/.*\.(css|js)$/, (req, res, next) => {
+router.use(/.*\.(css|ico|js)$/, (req, res, next) => {
   res.sendStatus(404)
 })
 

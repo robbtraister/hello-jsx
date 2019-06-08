@@ -16,7 +16,7 @@ const context = createContext({
   }
 })
 
-const isClient = (typeof window !== 'undefined')
+const isClient = (typeof window !== 'undefined' && window.fetch)
 
 class Store extends PureComponent {
   constructor (props) {
@@ -33,7 +33,7 @@ class Store extends PureComponent {
             this.setState({ [field]: undefined })
           })
       }
-      : () => null
+      : (field) => this.state[field]
 
     const get = (isClient)
       ? (field) => {
@@ -45,7 +45,7 @@ class Store extends PureComponent {
 
         this.state[field] = fetch(field)
       }
-      : () => null
+      : (field) => this.state[field]
 
     const put = (isClient)
       ? (field, doc) => {
@@ -72,6 +72,7 @@ class Store extends PureComponent {
       : () => undefined
 
     this.state = {
+      ...(props.store || {}),
       [METHOD_SYMBOL]: {
         fetch,
         get,

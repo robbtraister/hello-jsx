@@ -31,14 +31,19 @@ const pages = {
   score: Score
 }
 
+const Page = (props) =>
+  <BrowserRouter>
+    <App pages={pages} {...props} />
+  </BrowserRouter>
+
 function render (props) {
-  ReactDOM.render(
-    <BrowserRouter>
-      <App {...props} pages={pages} />
-    </BrowserRouter>,
+  ReactDOM.hydrate(
+    <Page {...props} />,
     window.document.getElementById('app')
   )
 }
 
 window.document.addEventListener('DOMContentLoaded', render)
 // window.document.body.onload = render
+
+export { Page }

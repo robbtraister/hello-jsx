@@ -59,13 +59,13 @@ const withTitle = (Page, title) => {
 
 class App extends Component {
   render () {
-    const { pages = {} } = this.props
+    const { pages = {}, store } = this.props
 
     const allowed = Object.keys(titles).filter(title => !blocked.includes(title))
 
     return (
       <Container>
-        <Store>
+        <Store store={store}>
           <Header tabs={allowed} />
           <Body>
             <Main>

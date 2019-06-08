@@ -26,6 +26,8 @@ const Main = styled.div(styles.main)
 const Score = (props) => {
   const score = useStore().get('score')
 
+  console.log({ score })
+
   return (score)
     ? <>
       <div>

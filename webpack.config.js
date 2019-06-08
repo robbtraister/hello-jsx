@@ -23,14 +23,7 @@ const sharedRules = [
         loader: 'babel-loader',
         options: {
           babelrc: false,
-          presets: [
-            '@babel/env',
-            '@babel/react'
-          ],
-          plugins: [
-            '@babel/proposal-class-properties',
-            '@babel/syntax-dynamic-import'
-          ]
+          ...require('./babel.config')
         }
       }
     ]

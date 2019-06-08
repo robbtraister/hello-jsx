@@ -12,7 +12,7 @@
     "preversion": "npm run test",
     "postversion": "git push && git push --tags",
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest ./test",
     "watch": "npm run clean && webpack --config ./webpack.dev.js --watch --mode=development"
   },
   "keywords": [],
@@ -39,11 +39,20 @@
     "css-loader": "^2.1.1",
     "electron": "^5.0.2",
     "file-loader": "^4.0.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.8.0",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.12.0",
+    "react-test-renderer": "^16.8.6",
     "sass-loader": "^7.1.0",
+    "standard": "^12.0.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.s?[ac]ss$": "identity-obj-proxy"
+    }
   }
 }
