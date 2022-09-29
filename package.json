@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "compression": "^1.7.4",
-    "d3": "^5.9.2",
+    "d3": "^7.6.1",
     "express": "^4.17.1",
     "ignore-loader": "^0.1.2",
     "mongoose": "^5.5.13",
